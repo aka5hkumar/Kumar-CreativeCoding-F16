@@ -7,6 +7,8 @@ color sib2;
 int red;
 int blue;
 int green;
+int offset1;
+int offset2;
 
 void setup()
 {
@@ -17,31 +19,30 @@ void setup()
   blue = int(random(0,255));
   green = int(random(0,255));
   mainColor=color(red,blue,green);
-    for(int i=1; i<4; i++)
-    {
+  offset1 = int(random(50,150));
+  offset2 = int(random(100,200));
       if (whichRGB == 0)
       {
-        sib1=color(red+int(random(10,20)), blue, green);
-        sib2=color(red+int(random(10,20)), blue, green);
+        sib1=color(red+offset1, blue, green);
+        sib2=color(red-offset2, blue, green);
         println(sib1);
         println(sib2);
 
       }
       else if (whichRGB == 1)
       {
-        sib1=color(red, blue+int(random(10,20)), green);
-        sib2=color(red, blue+int(random(10,20)), green);
+        sib1=color(red, blue+offset1, green);
+        sib2=color(red, blue-offset2, green);
         println(sib1);
         println(sib2);
       }
-      else 
+      else
       {
-        sib1=color(red, blue, green+int(random(10,20)));
-        sib2=color(red, blue, green+int(random(10,20)));
+        sib1=color(red, blue, green+offset1);
+        sib2=color(red, blue, green-offset2);
         println(sib1);
         println(sib2);
       }
-    }
 }
 
 void draw()
@@ -57,21 +58,21 @@ void draw()
 }
 void mousePressed()
 {
-  if (mouseY >=700 || mouseY <=800)
+  if (mouseY >=700 && mouseY <=800)
   {
-    if (mouseX >=200 || mouseX <= 300)
+    if (mouseX >=200 && mouseX <= 300)
     {
       println("Circle 1");
       fill(255,0,0);
       rect(0,0,1000,1000);
     }
-    if (mouseX >=500 || mouseX <= 600)
+    else if (mouseX >=500 && mouseX <= 600)
     {
       println("Circle 2");
       fill(0,255,0);
       rect(0,0,1000,1000);
     }
-    if (mouseX >=800 || mouseX <= 900)
+    else if (mouseX >=800 && mouseX <= 900)
     {
      println("Circle 3");
      fill(255,0,0);
@@ -83,7 +84,7 @@ void mousePressed()
      fill(0,0,0);
      rect(0,0,1000,1000);
   }
-  
+
 }
 else
 {
