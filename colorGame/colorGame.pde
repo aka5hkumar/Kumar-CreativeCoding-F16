@@ -1,4 +1,5 @@
 //Akash Kumar & Julia Shao
+
 int mainRandom = int(random(0,255));
 int whichRGB = int(random(0,2));
 color mainColor;
@@ -12,15 +13,15 @@ int offset2;
 
 void setup()
 {
-  size(1000,1000);
+  size(900,900);
 
   background(#FFFFFF);
   red = int(random(0,255));
   blue = int(random(0,255));
   green = int(random(0,255));
   mainColor=color(red,blue,green);
-  offset1 = int(random(50,150));
-  offset2 = int(random(100,200));
+  offset1 = int(random(10,15));
+  offset2 = int(random(10,25));
       if (whichRGB == 0)
       {
         sib1=color(red+offset1, blue, green);
@@ -47,49 +48,54 @@ void setup()
 
 void draw()
 {
+  textSize(20);
+  text("colorGame by Akash and Julia" , 30,40);
+  textSize(14);
+  text("Select the matching color." , 35, 65);
+  text("Green if you Win, Red if you lose" , 35, 85);
   fill(mainColor);
-  ellipse(500,300,200,200);
+  ellipse(450,300,200,200);
+  fill(mainColor);
+  ellipse(150,750,100,100);
   fill(sib1);
-  ellipse(250,750,100,100);
-  fill(mainColor);
-  ellipse(550,750,100,100);
+  ellipse(450,750,100,100);
   fill(sib2);
-  ellipse(850,750,100,100);
+  ellipse(750,750,100,100);
 }
 void mousePressed()
 {
   if (mouseY >=700 && mouseY <=800)
   {
-    if (mouseX >=200 && mouseX <= 300)
+    if (mouseX >=100 && mouseX <= 200)
     {
       println("Circle 1");
-      fill(255,0,0);
-      rect(0,0,1000,1000);
+      fill(148,232,144);
+      rect(0,0,900,900);
     }
-    else if (mouseX >=500 && mouseX <= 600)
+    else if (mouseX >=400 && mouseX <= 500)
     {
       println("Circle 2");
-      fill(0,255,0);
-      rect(0,0,1000,1000);
+      fill(148,31,46);
+      rect(0,0,900,900);
     }
-    else if (mouseX >=800 && mouseX <= 900)
+    else if (mouseX >=700 && mouseX <= 800)
     {
      println("Circle 3");
-     fill(255,0,0);
-     rect(0,0,1000,1000);
+     fill(148,31,46);
+     rect(0,0,900,900);
     }
   else
   {
       println("Out of bounds");
-     fill(0,0,0);
-     rect(0,0,1000,1000);
+     fill(255,255,255);
+     rect(0,0,900,900);
   }
 
 }
 else
 {
   println("Out of bounds");
-     fill(0,0,0);
-     rect(0,0,1000,1000);
+     fill(255,255,255);
+     rect(0,0,900,900);
 }
 }
