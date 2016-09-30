@@ -1,22 +1,38 @@
+var dataBoolean;
+var dataFloat;
+dataBoolean=true;
+
+
+
+function setup() {
+  createCanvas(600,500);
+  background(200);
+
+}
+
+function draw() {
+
+}
+
 //Akash Kumar
-var a;
-var b;
+int a;
+int b;
 //Global variables
 
-function setup()
+void setup()
 {
-  createCanvas(600,500);
+  size(600,500);
   background(255,255,255);
 }
-function draw(){
+void draw(){
   line(500,0,500,500);
     noStroke();
 }
 
-function mousePressed()
+void mousePressed()
 {
-  var x = mouseX;
-  var y = mouseY;
+  int x = mouseX;
+  int y = mouseY;
   if (x<width/2 && y<height/3)
   {
       fill(0,255,0);
