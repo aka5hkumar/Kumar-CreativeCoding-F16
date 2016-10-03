@@ -1,3 +1,7 @@
+/*
+Akash Kumar
+This program replicates a procedural painting. 
+*/
 var fourtyfive = 0.785398;
 var step = 100;
 var weight = step / 2;
