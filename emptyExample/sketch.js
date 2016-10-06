@@ -1,13 +1,24 @@
-var start = 0;
-var size = 25;  
+var minX = 100;
+var maxX = 400;
+var constrainedEllipseX = 0;
+var mappedEllipseX = 0;
+
+
 function setup() {
-    createCanvas(1000, 1000);
-    background(200);
+    createCanvas(500, 400);
 }
 
 function draw() {
-    while (start < width) {
-        rect(start, height / 2, 30, 20);
-        myPos = myPos + 50;
-    }
+    background(205);
+    line(minX,0,minX,height);
+    line(maxX,0,maxX,height);
+
+    constrainedEllipseX = constrain(mouseX,minX,maxX);
+    mappedEllipseX = map(mouseX,0,width,minX,maxX);
+    fill(255,0,0);
+    ellipse(constrainedEllipseX,height/3,20,20);
+
+    fill(0,255,0);
+    ellipse(mappedEllipseX,height*2/3,20,20);
+
 }
