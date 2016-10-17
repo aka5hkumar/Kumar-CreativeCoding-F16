@@ -111,21 +111,24 @@ function shapes() {
     for (k = 0; k < width; k+=1) {
         if (shape3 == 0) {
             fill(circleColor);
-            ellipse(shapeLocation3,k/clock, 50,50)
+            ellipse(shapeLocation3,200+time&300, 50,50)
         } else if (shape3 == 1) {
             fill(0, 0, 255);
-            rect(shapeLocation3, k/clock, 50,50)
+            rect(shapeLocation3, 200+time&300, 50,50)
         }
     }
     if (i > width) {
         i == 0;
+        randoms();
     }
 
     if (j > width) {
         j == 0;
+        randoms();
     }
     if (k > width) {
         k == 0;
+        randoms();
     }
     //println(i,j.k);
     //ellipse random location
