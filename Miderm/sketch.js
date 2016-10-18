@@ -73,7 +73,12 @@ function mainScreen() {
     movement++;
     //println("no movement", movement);
     shapes();
-    fill(139, 69, 19);
+    for (var i = 0; i < 256; i += score) {
+        colorMode(HSB, 255);
+        shade = color(35, i, 43);
+        fill(shade);
+        colorMode(RGB);
+    }
     rect(0, 450, 500, 50);
     fill(255);
     text("Score: ", 230, 480);
@@ -174,13 +179,16 @@ function shapes() {
         if (speed > 4500) {
             randoms();
         }
+
     }
+
     noStroke();
     fill(0, 0, 0, 210 - (movement / 4));
     ellipse(spriteX, spriteY, 80, 80);
     tint(255, 210 - (movement / 4));
     image(spriteImage, spriteX - 25, spriteY - 25);
-  tint(255, 255);
+    tint(255, 255);
+
     //ellipse random location
     //triangle random location
 
@@ -218,24 +226,24 @@ function hit() {
 
 
 
-    if (keyIsPressed === true) {
-        movement = 0;
-    }
-    if (keyIsDown(LEFT_ARROW)) {
-        spriteX -= 5;
-    } else if (keyIsDown(RIGHT_ARROW)) {
-        spriteX += 5;
-    }
+if (keyIsPressed === true) {
+    movement = 0;
+}
+if (keyIsDown(LEFT_ARROW)) {
+    spriteX -= 5;
+} else if (keyIsDown(RIGHT_ARROW)) {
+    spriteX += 5;
+}
 
 
-    timeOut();
-    //if shapes location matches sprite location then hit++
-    /*
-    if hit is green circle, then points
-    else lives--
-    if lives == 0
-    gameScreen==2
-    */
+timeOut();
+//if shapes location matches sprite location then hit++
+/*
+if hit is green circle, then points
+else lives--
+if lives == 0
+gameScreen==2
+*/
 }
 ////Interact function////
 function timeOut() {
