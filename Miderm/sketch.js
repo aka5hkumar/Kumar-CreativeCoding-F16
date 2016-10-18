@@ -140,7 +140,8 @@ function shapes() {
             randoms();
         }
     }
-    fill(movement / 4);
+    noStroke();
+    fill(0,0,0,255-(movement / 4));
     ellipse(spriteX, spriteY, 50, 80);
     //ellipse random location
     //triangle random location
