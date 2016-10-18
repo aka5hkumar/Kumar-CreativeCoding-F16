@@ -22,6 +22,7 @@ function setup() {
     createCanvas(500, 500)
     background(255);
    randoms();
+   circleColor = color(255, 0, 0);
 }
 
 function draw() {
@@ -46,13 +47,15 @@ function startScreen() {
 
 function mainScreen() {
     //main function
-    circleColor = color(255, 0, 0);
+
     background(156);
     fill(0);
-    rect(0, 450, 500, 50);
+
 
   //  println(randoms());
     shapes();
+    fill(0);
+        rect(0, 450, 500, 50);
     fill(255);
     text(score, 480, 480);
     text(lives, 20, 480);
@@ -90,47 +93,84 @@ function randoms() {
 function shapes() {
   var time = int(millis());
   println(time);
-    for (i = 0; i < time; i++) {
+  speed=(time%5000);
         if (shape1 == 0) {
             fill(circleColor);
-            ellipse(shapeLocation1, time%500 , 50,50)
+            ellipse(shapeLocation1, (time%5000)/(shapeLocation1/20) , 50,50)
+            if (speed>4500)
+            {
+              randoms();
+            }
         } else if (shape1 == 1) {
             fill(0, 0, 255);
-          rect(shapeLocation1,time%500, 50,50);
+          rect(shapeLocation1,(time%5000)/10, 50,50);
+          if (speed>4500)
+          {
+            randoms();
+          }
       }
-    }
-    for (j = 0; j < width; j+=1) {
-        if (shape2 == 0) {
-            fill(circleColor);
-            ellipse(shapeLocation2, 100+time%400, 50,50)
-        } else if (shape2 == 1) {
-            fill(0, 0, 255);
-            rect(shapeLocation2, 100+time%400, 50,50)
+      if (shape2 == 0) {
+          fill(circleColor);
+          ellipse(shapeLocation2, (time%5000)/(shapeLocation2/30) , 50,50)
+          if (speed>4500)
+          {
+            randoms();
+          }
+      } else if (shape2 == 1) {
+          fill(0, 0, 255);
+        rect(shapeLocation2,(time%5000)/(shapeLocation2/30), 50,50);
+        if (speed>4500)
+        {
+          randoms();
         }
     }
-    for (k = 0; k < width; k+=1) {
-        if (shape3 == 0) {
-            fill(circleColor);
-            ellipse(shapeLocation3,200+time&300, 50,50)
-        } else if (shape3 == 1) {
-            fill(0, 0, 255);
-            rect(shapeLocation3, 200+time&300, 50,50)
+    if (shape1 == 0) {
+        fill(circleColor);
+        ellipse(shapeLocation3, (time%5000)/(shapeLocation3/50) , 50,50)
+        if (speed>4800)
+        {
+          randoms();
         }
-    }
+    } else if (shape1 == 1) {
+        fill(0, 0, 255);
+      rect(shapeLocation3,(time%5000)/(shapeLocation3/50), 50,50);
+      if (speed>4500)
+      {
+        randoms();
+      }
+  }
+    // for (j = 0; j < width; j+=1) {
+    //     if (shape2 == 0) {
+    //         fill(circleColor);
+    //         ellipse(shapeLocation2, 100+time%400, 50,50)
+    //     } else if (shape2 == 1) {
+    //         fill(0, 0, 255);
+    //         rect(shapeLocation2, 100+time%400, 50,50)
+    //     }
+    // }
+    // for (k = 0; k < width; k+=1) {
+    //     if (shape3 == 0) {
+    //         fill(circleColor);
+    //         ellipse(shapeLocation3,200+time&300, 50,50)
+    //     } else if (shape3 == 1) {
+    //         fill(0, 0, 255);
+    //         rect(shapeLocation3, 200+time&300, 50,50)
+    //     }
+    // }
     if (i > width) {
         i == 0;
-        randoms();
+      //  randoms();
     }
-
-    if (j > width) {
-        j == 0;
-        randoms();
-    }
-    if (k > width) {
-        k == 0;
-        randoms();
-    }
-    //println(i,j.k);
+    //
+    // if (j > width) {
+    //     j == 0;
+    //     randoms();
+    // }
+    // if (k > width) {
+    //     k == 0;
+    //     randoms();
+    // }
+    // //println(i,j.k);
     //ellipse random location
     //triangle random location
 
