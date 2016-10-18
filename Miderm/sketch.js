@@ -54,7 +54,11 @@ function startScreen() {
     textAlign(CENTER);
     //Rules and Instructions, click to continue
     fill(255);
-    text("Click to start", height / 2, width / 2);
+    text("Rules & Instructions", 250, 200);
+    text("Acorns hurt, Apples help", 250, 220);
+    text("Move with arrow keys, click if unfair", 250, 240);
+    text("Whatever you do, do not stop moving", 250, 260);
+    text("Click to Continue", 250, 280);
 }
 
 function mainScreen() {
