@@ -18,7 +18,16 @@ var movement = 0;
 var shapeLocationY1;
 var shapeLocationY2;
 var shapeLocationY3;
-
+var backdrop;
+var spriteImage;
+var acorn;
+var apple;
+function preload() {
+  backdrop = loadImage("assets/backdrop.png");
+  spriteImage = loadImage("assets/sprite.png");
+  acorn =  loadImage("assets/acorn.png");
+  apple =  loadImage("assets/apple.png");
+}
 function setup() {
     createCanvas(500, 500)
     background(255);
@@ -52,12 +61,13 @@ function mainScreen() {
     //main function
 
     background(score);
+    image(backdrop, 0, 0);
     fill(0);
     hit();
     movement++;
     //println("no movement", movement);
     shapes();
-    fill(0);
+    fill(139,69,19);
     rect(0, 450, 500, 50);
     fill(255);
     text("Score: ", 230, 480);
@@ -115,26 +125,30 @@ function shapes() {
 
     if (shape1 == 0) {
         fill(circleColor);
-        ellipse(shapeLocation1, shapeLocationY1, 50, 50)
+        image(apple, shapeLocation1, shapeLocationY1);
+        //ellipse(shapeLocation1, shapeLocationY1, 50, 50)
         if (speed > 4500) {
             randoms();
         }
     } else if (shape1 == 1) {
         fill(0, 0, 255);
-        rect(shapeLocation1, shapeLocationY1, 50, 50);
+        image(acorn, shapeLocation1, shapeLocationY1);
+        //rect(shapeLocation1, shapeLocationY1, 50, 50);
         if (speed > 4500) {
             randoms();
         }
     }
     if (shape2 == 0) {
         fill(circleColor);
-        ellipse(shapeLocation2, shapeLocationY2, 50, 50)
+        image(apple, shapeLocation2, shapeLocationY2);
+        //ellipse(shapeLocation2, shapeLocationY2, 50, 50)
         if (speed > 4500) {
             randoms();
         }
     } else if (shape2 == 1) {
         fill(0, 0, 255);
-        rect(shapeLocation2, shapeLocationY2, 50, 50);
+        image(acorn, shapeLocation2, shapeLocationY2);
+        //rect(shapeLocation2, shapeLocationY2, 50, 50);
         if (speed > 4500) {
             randoms();
         }
@@ -142,20 +156,24 @@ function shapes() {
     if (shape1 == 0) {
         fill(circleColor);
         shapeLocationY2 = (time % 5000) / (shapeLocation3 / 50);
-        ellipse(shapeLocation3, shapeLocationY3, 50, 50)
+        image(apple, shapeLocation3, shapeLocationY3);
+      //  ellipse(shapeLocation3, shapeLocationY3, 50, 50)
         if (speed > 4800) {
             randoms();
         }
     } else if (shape1 == 1) {
         fill(0, 0, 255);
-        rect(shapeLocation3, shapeLocationY3, 50, 50);
+        image(acorn, shapeLocation3, shapeLocationY3);
+      //  rect(shapeLocation3, shapeLocationY3, 50, 50);
         if (speed > 4500) {
             randoms();
         }
     }
     noStroke();
     fill(0, 0, 0, 255 - (movement / 4));
-    ellipse(spriteX, spriteY, 50, 80);
+    ellipse(spriteX, spriteY, 80, 80);
+    image(spriteImage, spriteX-25, spriteY-25);
+
     //ellipse random location
     //triangle random location
 
