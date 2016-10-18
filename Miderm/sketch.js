@@ -10,11 +10,15 @@ var shapeLocation3;
 var shape1;
 var shape2;
 var shape3;
-var score = 0;
+var score = 100;
 var circleColor;
 var characterColor = 255;
 var spriteX = 250;
 var spriteY = 400;
+var movement = 0;
+var shapeLocationY1;
+var shapeLocationY2;
+var shapeLocationY3;
 
 function setup() {
     createCanvas(500, 500)
@@ -49,15 +53,15 @@ function mainScreen() {
     background(156);
     fill(0);
     hit();
-
-    //  println(randoms());
+    movement++;
+    //println("no movement", movement);
     shapes();
     fill(0);
     rect(0, 450, 500, 50);
     fill(255);
     text(score, 480, 480);
     text(lives, 20, 480);
-    println(shape1, shape2, shape3, shapeLocation1, shapeLocation2, shapeLocation3);
+    //println(shape1, shape2, shape3, shapeLocation1, shapeLocation2, shapeLocation3);
     //Background image
     //build sprite
     //Load shapes
@@ -90,48 +94,53 @@ function randoms() {
 
 function shapes() {
     var time = int(millis());
-    println(time);
+    //println(time);
     speed = (time % 5000);
+    shapeLocationY1 = (time % 5000) / (shapeLocation1 / 30);
+    shapeLocationY2 = (time % 5000) / (shapeLocation2 / 40);
+    shapeLocationY3 = (time % 5000) / (shapeLocation3 / 50);
     if (shape1 == 0) {
         fill(circleColor);
-        ellipse(shapeLocation1, (time % 5000) / (shapeLocation1 / 20), 50, 50)
+        ellipse(shapeLocation1, shapeLocationY1, 50, 50)
         if (speed > 4500) {
             randoms();
         }
     } else if (shape1 == 1) {
         fill(0, 0, 255);
-        rect(shapeLocation1, (time % 5000) / 10, 50, 50);
+        rect(shapeLocation1, shapeLocationY1, 50, 50);
         if (speed > 4500) {
             randoms();
         }
     }
     if (shape2 == 0) {
         fill(circleColor);
-        ellipse(shapeLocation2, (time % 5000) / (shapeLocation2 / 30), 50, 50)
+        ellipse(shapeLocation2, shapeLocationY2, 50, 50)
         if (speed > 4500) {
             randoms();
         }
     } else if (shape2 == 1) {
         fill(0, 0, 255);
-        rect(shapeLocation2, (time % 5000) / (shapeLocation2 / 30), 50, 50);
+        rect(shapeLocation2, shapeLocationY2, 50, 50);
         if (speed > 4500) {
             randoms();
         }
     }
     if (shape1 == 0) {
         fill(circleColor);
-        ellipse(shapeLocation3, (time % 5000) / (shapeLocation3 / 50), 50, 50)
+        shapeLocationY2 = (time % 5000) / (shapeLocation3 / 50);
+        ellipse(shapeLocation3, shapeLocationY3, 50, 50)
         if (speed > 4800) {
             randoms();
         }
     } else if (shape1 == 1) {
         fill(0, 0, 255);
-        rect(shapeLocation3, (time % 5000) / (shapeLocation3 / 50), 50, 50);
+
+        rect(shapeLocation3, shapeLocationY3, 50, 50);
         if (speed > 4500) {
             randoms();
         }
     }
-    fill(time%255);
+    fill(movement / 4);
     ellipse(spriteX, spriteY, 50, 80);
     //ellipse random location
     //triangle random location
@@ -139,31 +148,38 @@ function shapes() {
 }
 
 function hit() {
-    if (spriteX == shapeLocation1) {
+    if (spriteX == shapeLocation1 && shapeLocationY1 > 300) {
         if (shape1 == 0) {
             score += 10;
         } else if (shape1 == 1) {
             score -= 10;
         }
     }
-    if (spriteX == shapeLocation2) {
+    if (spriteX == shapeLocation2 && shapeLocationY2 > 300) {
         if (shape2 == 0) {
             score += 10;
         } else if (shape2 == 1) {
             score -= 10;
         }
     }
-    if (spriteX == shapeLocation3) {
-
-            if (shape3 == 0)
-{
-                score += 10;
+    if (spriteX == shapeLocation3 && shapeLocationY3 > 300) {
+        //println("Location",shapeLocationY3);
+        if (shape3 == 0) {
+            score += 10;
         } else if (shape3 == 1) {
             score -= 10;
         }
     }
     if (score < 0); {
         gameScreen == 2;
+    }
+    if (keyIsPressed === true) {
+        movement = 0;
+    }
+    if (keyIsDown(LEFT_ARROW)) {
+        spriteX -= 5;
+    } else if (keyIsDown(RIGHT_ARROW)) {
+        spriteX += 5;
     }
     //if shapes location matches sprite location then hit++
     /*
@@ -175,14 +191,16 @@ function hit() {
 }
 ////Interact function////
 function timeOut() {
+    if (movement >= 1000) {
+        gameScreen = 2;
+    }
+    if (lives < 1) {
+        gameScreen = 2;
+    }
     //if no movement change sprite color per frame once color == red, gameScreen == 2
 }
 
 
-function keyPressed() {
-    //  if keyCode == Arrows
-    //  else nothing
-}
 
 function startGame() {
     gameScreen = 1;
