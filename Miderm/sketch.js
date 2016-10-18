@@ -105,7 +105,7 @@ function endScreen() {
     fill(255);
     text("Score: ", 250, 180);
     text(score, 250, 200);
-    text("You lose", height / 2, width / 2);
+    text("You Lose", height / 2, width / 2);
 
 }
 // ///////////////Steering functions////////////////////
@@ -113,7 +113,7 @@ function randoms() {
     shape1 = int(random(0, 2));
     shape2 = int(random(0, 2));
     shape3 = int(random(0, 2));
-    shapeLocation1 = int(random(50, 150));
+    shapeLocation1 = int(random(50, 100));
     shapeLocation2 = int(random(200, 300));
     shapeLocation3 = int(random(350, 450));
 
@@ -176,11 +176,11 @@ function shapes() {
         }
     }
     noStroke();
-    fill(0, 0, 0, 255 - (movement / 4));
+    fill(0, 0, 0, 210 - (movement / 4));
     ellipse(spriteX, spriteY, 80, 80);
-    tint(255, 255 - (movement / 4));
+    tint(255, 210 - (movement / 4));
     image(spriteImage, spriteX - 25, spriteY - 25);
-
+  tint(255, 255);
     //ellipse random location
     //triangle random location
 
