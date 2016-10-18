@@ -3,7 +3,6 @@
 Description
 */
 var gameScreen = 0;
-var lives = 3;
 var shapeLocation1;
 var shapeLocation2;
 var shapeLocation3;
@@ -34,6 +33,8 @@ function draw() {
         mainScreen();
     } else if (gameScreen == 2) {
         endScreen();
+    } else if (gameScreen == 3) {
+        winScreen();
     }
 }
 
@@ -59,8 +60,8 @@ function mainScreen() {
     fill(0);
     rect(0, 450, 500, 50);
     fill(255);
-    text(score, 480, 480);
-    text(lives, 20, 480);
+    text("Score: ", 230, 480);
+    text(score, 270, 480);
     //println(shape1, shape2, shape3, shapeLocation1, shapeLocation2, shapeLocation3);
     //Background image
     //build sprite
@@ -71,16 +72,27 @@ function mainScreen() {
 
 }
 
+function winScreen() {
+    background(0);
+    textAlign(CENTER);
+    //You Lost
+    fill(255);
+    text("Score: ", 250, 180);
+    text(score, 250, 200);
+    text("You Win!", height / 2, width / 2);
+}
+
 function endScreen() {
     background(0);
     textAlign(CENTER);
     //You Lost
     fill(255);
+    text("Score: ", 250, 180);
     text(score, 250, 200);
     text("You lose", height / 2, width / 2);
 
 }
-// ////////////////////////////////////////Steering functions////////////////////
+// ///////////////Steering functions////////////////////
 function randoms() {
     shape1 = int(random(0, 2));
     shape2 = int(random(0, 2));
@@ -153,18 +165,18 @@ function hit() {
     if (spriteX < shapeLocation1 + 25 && spriteX > shapeLocation1 - 25) {
         if (shapeLocationY1 > 300 && shapeLocationY1 < 400) {
             if (shape1 == 0) {
-                score ++;
+                score++;
             } else if (shape1 == 1) {
-                score --;
+                score--;
             }
         }
     }
     if (spriteX < shapeLocation2 + 25 && spriteX > shapeLocation2 - 25) {
         if (shapeLocationY2 > 300 && shapeLocationY2 < 400) {
             if (shape2 == 0) {
-                score ++;
+                score++;
             } else if (shape2 == 1) {
-                score --;
+                score--;
             }
         }
     }
@@ -172,15 +184,15 @@ function hit() {
         if (shapeLocationY3 > 300 && shapeLocationY3 < 400) {
             //println("Location",shapeLocationY3);
             if (shape3 == 0) {
-                score ++;
+                score++;
             } else if (shape3 == 1) {
-                score --;
+                score--;
             }
         }
     }
-    if (score < 0); {
-        gameScreen == 2;
-    }
+
+
+
     if (keyIsPressed === true) {
         movement = 0;
     }
@@ -189,6 +201,8 @@ function hit() {
     } else if (keyIsDown(RIGHT_ARROW)) {
         spriteX += 5;
     }
+
+
     timeOut();
     //if shapes location matches sprite location then hit++
     /*
@@ -203,12 +217,10 @@ function timeOut() {
     if (movement >= 1000) {
         gameScreen = 2;
     }
-    if (lives < 1) {
+
+
+    if (score < 0) {
         gameScreen = 2;
-    }
-    if (score < 0)
-    {
-      gameScreen=2;
     }
     //if no movement change sprite color per frame once color == red, gameScreen == 2
 }
@@ -224,9 +236,13 @@ function mousePressed() {
         startGame()
     }
     if (gameScreen == 1) {
+        randoms();
         circleColor = color(0, 255, 0);
     }
     if (gameScreen == 2) {
+        setup()
+    }
+    if (gameScreen == 3) {
         setup()
     }
 }
