@@ -269,4 +269,9 @@ function mousePressed() {
 Start screen setup
 https://www.toptal.com/game/ultimate-guide-to-processing-simple-game
 
+Images
+http://www.lorrain.ca/logo-tree.png
+http://66.media.tumblr.com/2ca2889732c7acef83a51f8c480c1158/tumblr_inline_ndnad4onj41rujz3w.png
+http://www.abeka.com/BookImages/ClipArt/217433/46x46y50fx50fh/217433-Acorn-color-png.png
+http://www.abeka.com/BookImages/ClipArt/235865/46x46y50fx50fh/235865-Red-Apple-with-black-outline-color-png.png
 */
