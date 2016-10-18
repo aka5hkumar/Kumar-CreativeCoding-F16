@@ -138,14 +138,6 @@ function shapes() {
 
 }
 
-function movement() {
-    /*
-    Move the sprite left and right
-    get location of shapes
-    */
-
-}
-
 function hit() {
     if (spriteX == shapeLocation1) {
         if (shape1 == 0) {
@@ -194,13 +186,6 @@ function keyPressed() {
 
 function startGame() {
     gameScreen = 1;
-}
-
-function checkShape() {
-    /*
-    there are three shapes, if HIT check which kind was hit, and check color. If bad, 1 if good 0.
-    */
-
 }
 
 function mousePressed() {
