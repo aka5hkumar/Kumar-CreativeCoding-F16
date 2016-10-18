@@ -149,21 +149,21 @@ function shapes() {
 }
 
 function hit() {
-    if (spriteX == shapeLocation1 && shapeLocationY1 > 300) {
+    if (spriteX > shapeLocation1+15 && spriteX < shapeLocation1-15 && shapeLocationY1 > 300 && shapeLocationY1< 400) {
         if (shape1 == 0) {
             score += 10;
         } else if (shape1 == 1) {
             score -= 10;
         }
     }
-    if (spriteX == shapeLocation2 && shapeLocationY2 > 300) {
+    if (spriteX > shapeLocation2+15 && spriteX < shapeLocation2-15 && shapeLocationY2 > 300 && shapeLocationY2<400) {
         if (shape2 == 0) {
             score += 10;
         } else if (shape2 == 1) {
             score -= 10;
         }
     }
-    if (spriteX == shapeLocation3 && shapeLocationY3 > 300) {
+    if (spriteX > shapeLocation3+15 && spriteX < shapeLocation3-15 && shapeLocationY3 > 300 && shapeLocationY3 < 400) {
         //println("Location",shapeLocationY3);
         if (shape3 == 0) {
             score += 10;
