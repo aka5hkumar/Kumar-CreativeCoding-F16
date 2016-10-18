@@ -50,7 +50,7 @@ function startScreen() {
 function mainScreen() {
     //main function
 
-    background(156);
+    background(score);
     fill(0);
     hit();
     movement++;
@@ -76,8 +76,9 @@ function endScreen() {
     textAlign(CENTER);
     //You Lost
     fill(255);
-    text(score, 200, 200);
+    text(score, 250, 200);
     text("You lose", height / 2, width / 2);
+
 }
 // ////////////////////////////////////////Steering functions////////////////////
 function randoms() {
@@ -99,6 +100,7 @@ function shapes() {
     shapeLocationY1 = (time % 5000) / (shapeLocation1 / 30);
     shapeLocationY2 = (time % 5000) / (shapeLocation2 / 40);
     shapeLocationY3 = (time % 5000) / (shapeLocation3 / 50);
+
     if (shape1 == 0) {
         fill(circleColor);
         ellipse(shapeLocation1, shapeLocationY1, 50, 50)
@@ -134,14 +136,13 @@ function shapes() {
         }
     } else if (shape1 == 1) {
         fill(0, 0, 255);
-
         rect(shapeLocation3, shapeLocationY3, 50, 50);
         if (speed > 4500) {
             randoms();
         }
     }
     noStroke();
-    fill(0,0,0,255-(movement / 4));
+    fill(0, 0, 0, 255 - (movement / 4));
     ellipse(spriteX, spriteY, 50, 80);
     //ellipse random location
     //triangle random location
@@ -149,26 +150,32 @@ function shapes() {
 }
 
 function hit() {
-    if (spriteX > shapeLocation1+15 && spriteX < shapeLocation1-15 && shapeLocationY1 > 300 && shapeLocationY1< 400) {
-        if (shape1 == 0) {
-            score += 10;
-        } else if (shape1 == 1) {
-            score -= 10;
+    if (spriteX < shapeLocation1 + 25 && spriteX > shapeLocation1 - 25) {
+        if (shapeLocationY1 > 300 && shapeLocationY1 < 400) {
+            if (shape1 == 0) {
+                score ++;
+            } else if (shape1 == 1) {
+                score --;
+            }
         }
     }
-    if (spriteX > shapeLocation2+15 && spriteX < shapeLocation2-15 && shapeLocationY2 > 300 && shapeLocationY2<400) {
-        if (shape2 == 0) {
-            score += 10;
-        } else if (shape2 == 1) {
-            score -= 10;
+    if (spriteX < shapeLocation2 + 25 && spriteX > shapeLocation2 - 25) {
+        if (shapeLocationY2 > 300 && shapeLocationY2 < 400) {
+            if (shape2 == 0) {
+                score ++;
+            } else if (shape2 == 1) {
+                score --;
+            }
         }
     }
-    if (spriteX > shapeLocation3+15 && spriteX < shapeLocation3-15 && shapeLocationY3 > 300 && shapeLocationY3 < 400) {
-        //println("Location",shapeLocationY3);
-        if (shape3 == 0) {
-            score += 10;
-        } else if (shape3 == 1) {
-            score -= 10;
+    if (spriteX < shapeLocation3 + 25 && spriteX > shapeLocation3 - 25) {
+        if (shapeLocationY3 > 300 && shapeLocationY3 < 400) {
+            //println("Location",shapeLocationY3);
+            if (shape3 == 0) {
+                score ++;
+            } else if (shape3 == 1) {
+                score --;
+            }
         }
     }
     if (score < 0); {
@@ -182,6 +189,7 @@ function hit() {
     } else if (keyIsDown(RIGHT_ARROW)) {
         spriteX += 5;
     }
+    timeOut();
     //if shapes location matches sprite location then hit++
     /*
     if hit is green circle, then points
@@ -197,6 +205,10 @@ function timeOut() {
     }
     if (lives < 1) {
         gameScreen = 2;
+    }
+    if (score < 0)
+    {
+      gameScreen=2;
     }
     //if no movement change sprite color per frame once color == red, gameScreen == 2
 }
@@ -215,7 +227,7 @@ function mousePressed() {
         circleColor = color(0, 255, 0);
     }
     if (gameScreen == 2) {
-        startGame()
+        setup()
     }
 }
 /*
